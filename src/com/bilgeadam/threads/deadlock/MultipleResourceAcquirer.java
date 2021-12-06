@@ -1,17 +1,20 @@
 package com.bilgeadam.threads.deadlock;
 
 public class MultipleResourceAcquirer {
-    private final Object left, right,lock;
+    private final Lock left, right;
 
-    public MultipleResourceAcquirer(Object left, Object right) {
-        this.left = new Object();
-        this.right = new Object();
+    public MultipleResourceAcquirer(Lock left, Lock right) {
+        this.left = left;
+        this.right = right;
     }
 
-    public void processObjects(Lock lock, Lock right){
-
+    public void processObjects(Lock lock) throws InterruptedException {
         synchronized (lock){
-            System.out.printf("%s acquired %s", Thread.currentThread().getName(),left);
+            System.out.printf("%s acquired %s", Thread.currentThread().getName(),lock);
+
+            synchronized (this) {
+                wait(50L);
+            }
 
             Lock otherLock = lock == left ? right : left;
             synchronized (otherLock){
@@ -30,7 +33,7 @@ class Lock{
 
     @Override
     public String toString() {
-        return super.toString();
+        return name;
     }
 
 }

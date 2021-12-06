@@ -4,13 +4,13 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 
 public class AsyncMessenger {
-    private final Object acceptLock, readLock;
+    private final Object writeLock, readLock;
     private final Deque<String> messages;
     private int messageCounter;
 
 
     public AsyncMessenger() {
-        this.acceptLock = new Object();
+        this.writeLock = new Object();
         this.readLock = new Object();
         messageCounter = 0;
         messages = new ArrayDeque<>();
@@ -18,19 +18,19 @@ public class AsyncMessenger {
 
     public void acceptMessage(String message){
         messageCounter++;
-        synchronized (acceptLock){
-            System.out.printf("%s is adding %s\n", Thread.currentThread().getName(), message );
+        synchronized (this){
+            //System.out.printf("%s is adding %s\n", Thread.currentThread().getName(), message );
             messages.add(message);
         }
     }
 
-    public Runnable processMessages(){
-        synchronized (readLock) {
-            return (() -> System.out.printf("%s is processing message\n", Thread.currentThread().getName()));
+    public String processMessages(){
+        synchronized (this) {
+            return messages.isEmpty() ? "NO MESSAGE" : messages.pop();
         }
     }
 
-    protected int waitingMessagesSize(){
+    protected int waitingMessageSize(){
         return messages.size();
     }
 }

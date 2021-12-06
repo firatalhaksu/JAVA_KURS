@@ -6,20 +6,19 @@ import java.util.List;
 import java.util.Vector;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class Coordinator {
-
-    public void coordinateSimulation(SimSettings settings){
-        int[] streamer = new int[settings.iterationCount()];
-
+    public void coordinateSimulation(SimSettings settings) throws InterruptedException{
         List<SumStatistics> stats = new Vector<>(settings.iterationCount());
         ExecutorService executors = Executors.newFixedThreadPool(10);
 
-        for (int i = 0; i < settings.iterationCount(); i++) {
+        for (int i = 0; i < settings.iterationCount(); i++)
             executors.submit(() -> stats.add(new GenerateSimulation(settings).startSimulation()));
-        }
-        executors.submit(() -> System.out.println(computeStatistics(stats)));
         executors.shutdown();
+        executors.awaitTermination(1, TimeUnit.DAYS);
+
+        System.out.println(computeStatistics(stats));
     }
 
     public static void main(String[] args) throws InterruptedException {
@@ -40,7 +39,6 @@ public class Coordinator {
     }
 
     private static SumStatistics computeStatistics(List<SumStatistics> statistics){
-
         float totalCount = 0, birthCount = 0, deathCount = 0;
         for (SumStatistics stat : statistics) {
             totalCount += stat.totalAnimals();
@@ -50,6 +48,6 @@ public class Coordinator {
 
         return new SumStatistics(deathCount / statistics.size(),
                 birthCount / statistics.size(),
-                deathCount / statistics.size());
+                totalCount / statistics.size());
     }
 }
