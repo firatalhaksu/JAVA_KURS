@@ -20,7 +20,5 @@ public class UserController {
         } catch (SQLException e) {
             System.out.println("Cannot connect to DB!");
         }
-
-
     }
 }
