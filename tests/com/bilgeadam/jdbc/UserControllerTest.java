@@ -14,6 +14,6 @@ class UserControllerTest {
 
     @Test
     void addUser() {
-        controller.addUser(2151651L, "Muhammet KILIÇ");
+        controller.addUser(2151651L, "Test Deneme");
     }
 }
