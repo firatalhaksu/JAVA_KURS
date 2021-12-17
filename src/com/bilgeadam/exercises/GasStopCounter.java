@@ -24,11 +24,6 @@ public class GasStopCounter {
                 }
             }
 
-            /*for (int[] stop : gasStops) {
-                if (stop[0] <= currentGas)
-                    candidateStops.add(stop);
-            }*/
-
             if (!candidateStops.isEmpty()) {
                 currentGas += candidateStops.poll()[1];
                 counter++;
