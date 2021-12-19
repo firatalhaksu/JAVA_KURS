@@ -26,16 +26,46 @@ public class UserController {
         }
     }
 
+    public boolean updateUsers(long ID,String name, String surname){
+        String sql = "UPDATE public.\"Users\" SET \"Name\"=?, \"Surname\"=? WHERE \"ID\"=?";
+
+        try(Connection conn = Connector.getConnection()) {
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, name);
+            statement.setString(2, surname);
+            statement.setLong(3, ID);
+
+            return statement.executeUpdate() == 1;
+        } catch (SQLException e) {
+            System.out.println("There is a problem with Database!");
+            return false;
+        }
+    }
+
     public long deleteUsers(){
         String sql = "DELETE FROM public.\"Users\"";
 
         try(Connection conn = Connector.getConnection()) {
             PreparedStatement statement = conn.prepareStatement(sql);
 
-           return statement.executeUpdate();
+           return statement.executeLargeUpdate();
         } catch (SQLException e) {
             System.out.println("There is a problem with Database!");
             return 0L;
+        }
+    }
+
+    public boolean deleteUsers(long ID){
+        String sql = "DELETE FROM public.\"Users\" WHERE \"ID\"=?";
+
+        try(Connection conn = Connector.getConnection()) {
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setLong(1, ID);
+
+            return statement.executeUpdate() == 1;
+        } catch (SQLException e) {
+            System.out.println("There is a problem with Database!");
+            return false;
         }
     }
 
@@ -46,6 +76,7 @@ public class UserController {
             PreparedStatement statement = conn.prepareStatement(sql);
 
             ResultSet results = statement.executeQuery();
+
             return convertToUsers(results);
 
         } catch (SQLException e) {
@@ -56,7 +87,7 @@ public class UserController {
     }
 
     public User getUsers(long ID){                                 //ID ile spesifik arama...
-        String sql = "SELECT * FROM public.\"Users\" WHERE ID=?";
+        String sql = "SELECT * FROM public.\"Users\" WHERE \"ID\"=?";
 
         try(Connection conn = Connector.getConnection()) {
             PreparedStatement statement = conn.prepareStatement(sql);
@@ -80,7 +111,6 @@ public class UserController {
                             results.getString("Name"),
                             results.getString("Surname")));
         }
-
         return users;
     }
 }

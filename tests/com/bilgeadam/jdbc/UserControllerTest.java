@@ -1,8 +1,10 @@
 package com.bilgeadam.jdbc;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import java.util.Collections;
 
 
 class UserControllerTest {
@@ -11,11 +13,18 @@ class UserControllerTest {
     @BeforeEach
     void setup(){
         controller = new UserController();
+        controller.deleteUsers();
+    }
+
+    @AfterEach
+    void tearDown() {
+        controller.deleteUsers();
+        Assertions.assertEquals(Collections.emptySet(),controller.getUsers());
     }
 
     @Test
     void addUser() {
-        controller.addUser(1487L,"Someone Else");
+        Assertions.assertDoesNotThrow(() -> controller.addUser(14875416L,"Someone Else"));
     }
 
     @Test
@@ -32,7 +41,30 @@ class UserControllerTest {
     }
 
     @Test
-    void deleteTable(){
-        controller.deleteUsers();
+    void deleteUsers(){
+        long ID = 0;
+        controller.addUser(ID,"Someone Else");
+        Assertions.assertEquals(1, controller.deleteUsers());
+    }
+
+    @Test
+    void testDeleteUsers(){
+        long ID = 5;
+
+        Assertions.assertFalse(controller.deleteUsers(ID));
+
+        controller.addUser(ID,"Someone Else");
+        Assertions.assertEquals(1, controller.deleteUsers());
+    }
+
+    @Test
+    void updateUser(){
+        long ID = 5;
+        controller.addUser(ID,"Someone Else");
+        System.out.println("User added!");
+
+        Assertions.assertTrue(controller.updateUsers(5,"Hello", "World"));
+        System.out.println("User updated!");
+
     }
 }
