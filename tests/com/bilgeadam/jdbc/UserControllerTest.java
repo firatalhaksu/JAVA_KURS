@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.Collections;
-
+import java.util.Random;
 
 class UserControllerTest {
     private UserController controller;
@@ -13,7 +13,8 @@ class UserControllerTest {
     @BeforeEach
     void setup(){
         controller = new UserController();
-        controller.deleteUsers();
+        Random r = new Random();
+        controller.addUser(r.nextLong(),"Hello World");
     }
 
     @AfterEach
@@ -24,7 +25,7 @@ class UserControllerTest {
 
     @Test
     void addUser() {
-        Assertions.assertDoesNotThrow(() -> controller.addUser(14875416L,"Someone Else"));
+        Assertions.assertDoesNotThrow(() -> controller.addUser(new Random().nextLong(),"Someone Else"));
     }
 
     @Test

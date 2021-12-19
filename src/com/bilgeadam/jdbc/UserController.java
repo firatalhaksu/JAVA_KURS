@@ -6,10 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.UUID;
 
 public class UserController {
-    public void addUser(Long ID, String name){
+    public void addUser(long ID, String name){
         //UUID.randomUUID();
         String sql = "INSERT INTO public.\"Users\" (\"ID\", \"Name\", \"Surname\") values(?, ?, ?)";
 
