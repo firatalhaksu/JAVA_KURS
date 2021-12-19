@@ -6,8 +6,7 @@ import java.sql.SQLException;
 
 public class UserController {
     public void addUser(Long ID, String name){
-        String sql = "INSERT INTO USERS(ID, Name, Surname) values(?, ?, ?)";
-
+        String sql = "INSERT INTO public.\"Users\" (\"ID\", \"Name\", \"Surname\") values(?, ?, ?)";
 
         try(Connection conn = Connector.getConnection()) {
             PreparedStatement statement = conn.prepareStatement(sql);
@@ -17,8 +16,9 @@ public class UserController {
 
             statement.execute();
 
+
         } catch (SQLException e) {
-            System.out.println("Cannot connect to DB!");
+            System.out.println("There is a problem with Database!");
         }
     }
 }
