@@ -26,8 +26,17 @@ public class UserController {
         }
     }
 
-    public void deleteUsers(){
+    public long deleteUsers(){
+        String sql = "DELETE FROM public.\"Users\"";
 
+        try(Connection conn = Connector.getConnection()) {
+            PreparedStatement statement = conn.prepareStatement(sql);
+
+           return statement.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("There is a problem with Database!");
+            return 0L;
+        }
     }
 
     public Set<User> getUsers(){
@@ -63,8 +72,6 @@ public class UserController {
         }
     }
 
-
-
     private Set<User> convertToUsers(ResultSet results) throws SQLException {
 
         Set<User> users = new HashSet<>();
@@ -76,6 +83,4 @@ public class UserController {
 
         return users;
     }
-
-
 }

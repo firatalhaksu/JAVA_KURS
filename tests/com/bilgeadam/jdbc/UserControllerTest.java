@@ -30,4 +30,9 @@ class UserControllerTest {
 
         Assertions.assertNotEquals(new User(ID,"Someone","Else"), controller.getUsers(ID));
     }
+
+    @Test
+    void deleteTable(){
+        controller.deleteUsers();
+    }
 }
