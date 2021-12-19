@@ -1,5 +1,6 @@
 package com.bilgeadam.jdbc;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -14,6 +15,19 @@ class UserControllerTest {
 
     @Test
     void addUser() {
-        controller.addUser(2151651L, "Test Deneme");
+        controller.addUser(1487L,"Someone Else");
+    }
+
+    @Test
+    void getUser(){
+        Assertions.assertNotNull(controller.getUsers());
+    }
+
+    @Test
+    void getUserID(){
+        long ID = 1487;
+        controller.addUser(ID,"Someone Else");
+
+        Assertions.assertNotEquals(new User(ID,"Someone","Else"), controller.getUsers(ID));
     }
 }
