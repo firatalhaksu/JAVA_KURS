@@ -4,8 +4,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import java.util.Collections;
-import java.util.Random;
 
 class UserControllerTest {
     private UserController controller;
@@ -13,8 +13,7 @@ class UserControllerTest {
     @BeforeEach
     void setup(){
         controller = new UserController();
-        Random r = new Random();
-        controller.addUser(r.nextLong(),"Hello World");
+        controller.deleteUsers();
     }
 
     @AfterEach
@@ -25,7 +24,7 @@ class UserControllerTest {
 
     @Test
     void addUser() {
-        Assertions.assertDoesNotThrow(() -> controller.addUser(new Random().nextLong(),"Someone Else"));
+        Assertions.assertDoesNotThrow(() -> controller.addUser(216156161,"Someone Else"));
     }
 
     @Test
@@ -35,10 +34,9 @@ class UserControllerTest {
 
     @Test
     void getUserID(){
-        long ID = 1487;
-        controller.addUser(ID,"Someone Else");
-
-        Assertions.assertNotEquals(new User(ID,"Someone","Else"), controller.getUsers(ID));
+        long ID = 14845437;
+        controller.addUser(ID,"Some Users");
+        Assertions.assertEquals(new User(ID,"Some","Users"), controller.getUser(ID));
     }
 
     @Test
@@ -55,17 +53,14 @@ class UserControllerTest {
         Assertions.assertFalse(controller.deleteUsers(ID));
 
         controller.addUser(ID,"Someone Else");
-        Assertions.assertEquals(1, controller.deleteUsers());
+        Assertions.assertTrue(controller.deleteUsers(ID));
     }
 
     @Test
     void updateUser(){
         long ID = 5;
         controller.addUser(ID,"Someone Else");
-        System.out.println("User added!");
 
-        Assertions.assertTrue(controller.updateUsers(5,"Hello", "World"));
-        System.out.println("User updated!");
-
+        Assertions.assertTrue(controller.updateUsers(ID,"Hello", "World"));
     }
 }
