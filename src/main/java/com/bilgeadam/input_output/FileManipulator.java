@@ -11,7 +11,7 @@ public class FileManipulator {
 
     public void readFile() throws IOException {
 
-        File file = new File("resouces" + File.separator + "Demo.txt");
+        File file = new File("src/main/resources" + File.separator + "Demo.txt");
         FileReader reader = null;
         if (file.isFile()) {
             try {
