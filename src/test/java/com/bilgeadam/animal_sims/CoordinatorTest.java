@@ -2,10 +2,7 @@ package com.bilgeadam.animal_sims;
 
 import com.bilgeadam.animal_sims.Coordinator;
 import com.bilgeadam.animal_sims.simulation.SimSettings;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.RepeatedTest;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -19,6 +16,7 @@ class CoordinatorTest {
         settings = new SimSettings(100, 100, 0.45F, 30, 12, 8);
     }
 
+    @Disabled
     @RepeatedTest(10)
     void main() {
         Assertions.assertDoesNotThrow(() -> coordinator.coordinateSimulation(settings));

@@ -1,11 +1,8 @@
 package com.bilgeadam.threads.deadlock;
 
-import com.bilgeadam.threads.deadlock.Lock;
-import com.bilgeadam.threads.deadlock.MultipleResourceAcquirer;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class MultipleResourceAcquirerTest {
     Lock left, right;
@@ -20,6 +17,7 @@ class MultipleResourceAcquirerTest {
         two = new MultipleResourceAcquirer(left, right);
     }
 
+    @Disabled
     @Test
     void processObjects() throws InterruptedException {
         Thread t1 = new Thread(() -> {
