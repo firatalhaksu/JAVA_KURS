@@ -1,5 +1,6 @@
 package com.bilgeadam.hibernate;
 
+import com.bilgeadam.hibernate.entity.Customer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

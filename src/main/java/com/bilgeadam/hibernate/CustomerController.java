@@ -1,5 +1,6 @@
 package com.bilgeadam.hibernate;
 
+import com.bilgeadam.hibernate.entity.Customer;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
