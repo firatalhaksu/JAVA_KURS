@@ -1,8 +1,6 @@
 package com.bilgeadam.jdbc;
 
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Connection;
+import java.sql.*;
 
 public class Connector {
     private static final String CONNECTION = "jdbc:postgresql://localhost:5432/bilgeadam";
