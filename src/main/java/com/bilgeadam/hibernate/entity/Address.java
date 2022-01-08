@@ -1,6 +1,5 @@
 package com.bilgeadam.hibernate.entity;
 
-
 import jakarta.persistence.*;
 
 @Entity
@@ -22,10 +21,19 @@ public class Address {
     @Column
     private long PostalCode;
 
+    @OneToOne(mappedBy = "address")
     private Customer customer;
 
     public String getCountry() {
         return Country;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public void setCountry(String country) {
@@ -54,14 +62,6 @@ public class Address {
 
     public void setPostalCode(long postalCode) {
         PostalCode = postalCode;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public Customer getCustomer() {

@@ -1,23 +1,28 @@
 package com.bilgeadam.hibernate.entity;
 
 import jakarta.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name = "Customers")
-class Customer {
+@Table
+public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ID;
 
-    @Column(name = "first_name")
+    @Column(name = "first_name", length = 80, nullable = false)
     private String name;
 
     @Enumerated(EnumType.STRING)
-    public CustomerTypes type;
+    private CustomerTypes type;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id", referencedColumnName = "id")
     private Address address;
+
+    @ElementCollection
+    private List<String> emails;
 
     public Customer(){
         type = CustomerTypes.Regular;
@@ -27,8 +32,8 @@ class Customer {
         return ID;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setID(int uuid) {
+        this.ID = uuid;
     }
 
     public String getName() {
@@ -47,7 +52,26 @@ class Customer {
         this.type = type;
     }
 
+    public Address getAddress(){
+        return address;
+    }
+
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public List<String> getEmails(){
+        return emails;
+    }
+
+    public void setEmails(List<String>  emails){
+        this.emails = emails;
+    }
+
+    public void addEmail(String email){
+        if (emails == null){
+            emails = new ArrayList<>();
+        }
+        emails.add(email);
     }
 }
