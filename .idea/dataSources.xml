@@ -28,5 +28,12 @@ C:/Users/muham/IdeaProjects/JAVA_KURS/src/main/resources/hibernate.cfg.xml</rema
       <jdbc-url>jdbc:postgresql://localhost:5432/bilgeadam</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="JAVA_KURS/Hibernate2/toys" uuid="582cb01e-2390-4d3a-a0fc-0d47bf1a9f93">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/toys</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>
