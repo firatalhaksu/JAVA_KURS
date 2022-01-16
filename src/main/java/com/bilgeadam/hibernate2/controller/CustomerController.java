@@ -90,7 +90,7 @@ public class CustomerController {
 //            session.saveOrUpdate(customer);
 //            transaction.commit();
 
-            Query query = session.createQuery("INSERT INTO customer_toys(customer_id, toy_id) VALUES(:cId :tId)");
+            Query query = session.createNativeQuery("INSERT INTO customer_toys(customer_id, toy_id) VALUES(:cId :tId)");
             query.setParameter("cId", customerId);
             query.setParameter("tId", toyId);
             query.executeUpdate();
