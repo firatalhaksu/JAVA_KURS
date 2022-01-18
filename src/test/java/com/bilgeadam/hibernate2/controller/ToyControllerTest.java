@@ -1,6 +1,7 @@
 package com.bilgeadam.hibernate2.controller;
 
-import com.bilgeadam.hibernate2.entities.*;
+import com.bilgeadam.hibernate2.entities.toys.Toy;
+import com.bilgeadam.hibernate2.entities.toys.ToyType;
 import org.junit.jupiter.api.*;
 
 class ToyControllerTest {
@@ -13,7 +14,7 @@ class ToyControllerTest {
 
     @Test
     void addNewToy () {
-        Toy toy = new Toy("Pinokyo",ToyType.Child);
+        Toy toy = new Toy("Pinokyo", ToyType.Child);
 
         Assertions.assertTrue(controller.addNewToy(toy));
         Assertions.assertTrue(controller.addNewToy(toy)); //False olması lazım ancak hata veriyor.

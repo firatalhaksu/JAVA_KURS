@@ -1,8 +1,8 @@
 package com.bilgeadam.hibernate2.controller;
 
 import com.bilgeadam.hibernate2.SessionGenerator;
-import com.bilgeadam.hibernate2.entities.ToyType;
-import com.bilgeadam.hibernate2.entities.Toy;
+import com.bilgeadam.hibernate2.entities.toys.ToyType;
+import com.bilgeadam.hibernate2.entities.toys.Toy;
 import jakarta.persistence.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -10,7 +10,7 @@ import org.hibernate.Transaction;
 
 public class ToyController {
 
-    private SessionFactory factory;
+    private final SessionFactory factory;
 
     public ToyController(){
         this.factory = SessionGenerator.generateSession();

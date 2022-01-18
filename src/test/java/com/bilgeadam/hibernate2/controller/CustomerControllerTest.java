@@ -1,26 +1,50 @@
 package com.bilgeadam.hibernate2.controller;
 
-import com.bilgeadam.hibernate2.entities.*;
-import org.junit.jupiter.api.*;
+import com.bilgeadam.hibernate2.entities.customers.Address;
+import com.bilgeadam.hibernate2.entities.customers.Customer;
+import org.hibernate.LazyInitializationException;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.Optional;
 
 class CustomerControllerTest {
     CustomerController controller;
-    ToyController toyController;
+
+    private Customer c1;
 
     @BeforeEach
     void setUp() {
         controller = new CustomerController();
-        toyController = new ToyController();
+        c1 = generateCustomer();
+        controller.addCustomer(c1);
+    }
+
+    @AfterEach
+    void tearDown() {
+        controller.deleteCustomer(c1.getID());
     }
 
     @Test
     void addCustomer() {
-        Customer c = generateCustomer();
-        Assertions.assertTrue(controller.addCustomer(c));
+
+        Assertions.assertTrue(controller.addCustomer(c1));
+    }
+
+    @Test
+    void testDeleteCustomer() {
+        controller.deleteCustomer(c1.getID());
     }
 
     @Test
     void deleteCustomer() {
+        controller.updateCustomerAddress(1,generateAddress());
+        Assertions.assertTrue(controller.hardDeleteCustomer(c1.getID()));
+        c1.getAddress();
     }
 
     @Test
@@ -28,25 +52,20 @@ class CustomerControllerTest {
         controller.updateCustomerAddress(1,generateAddress());
     }
 
-    @Test
-    void updateRelation(){
-        //Setup kısmı (2 müşteri ve 2 oyuncak oluşturuyoruz)
-        Customer c1 = new Customer("First","Customer");
-        Customer c2 = new Customer("Second","Customer");
-        controller.addCustomer(c1);
-        controller.addCustomer(c2);
+    @ParameterizedTest
+    @ValueSource (booleans = {true, false})
+    void lazyAddressFetch(boolean includeAddress, boolean includeInactive){
+        Address address = generateAddress();
+        Assertions.assertTrue(controller.updateCustomerAddress(c1.getID(), address));
 
-        Toy t1 = new Toy("Train", ToyType.Child);
-        Toy t2 = new Toy("Train", ToyType.Teenage);
-        toyController.addNewToy(t1);
-        toyController.addNewToy(t2);
+        Optional<Customer> response =  controller.getCustomer(c1.getID(), includeInactive, includeAddress);
 
-        //Test (Oyuncakları müşterilere ekleme test kısmı)
-        controller.addCustomerToy(c1.getID(),t1.getID());
-        controller.addCustomerToy(c1.getID(),t2.getID());
-
-        controller.addCustomerToy(c2.getID(),t1.getID());
-
+        if (includeAddress)
+            Assertions.assertNotNull(response.orElseThrow().getAddress());
+        else {
+//            Assertions.assertThrows(LazyInitializationException.class, () -> response.orElseThrow().getAddress());
+//            Assertions.assertNull(response.orElseThrow().getAddress());
+        }
     }
 
 
@@ -67,4 +86,6 @@ class CustomerControllerTest {
 
         return address;
     }
+
+
 }

@@ -1,9 +1,7 @@
-package com.bilgeadam.hibernate2.entities;
+package com.bilgeadam.hibernate2.entities.toys;
 
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.util.Set;
 
 @Getter
 @Setter
@@ -16,18 +14,14 @@ public class Toy {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     //"strategy" yerine "generator" ile kendi Generation metodumuzu çağırabiliyoruz*****
-    @Column(name = "ID")
     private Long ID;
 
-    @Column (name = "Name")
+    @Column (name = "name")
     private String name;
 
     @Enumerated(EnumType.STRING)
-    @Column (name = "Type")
+    @Column (name = "type")
     private ToyType type;
-
-    @ManyToMany(mappedBy = "toys")
-    private Set<Customer> customers;
 
     public Toy(String name, ToyType type) {
         this.name = name;

@@ -1,4 +1,4 @@
-package com.bilgeadam.hibernate2.entities;
+package com.bilgeadam.hibernate2.entities.toys;
 
 public enum ToyType {
     Babies,

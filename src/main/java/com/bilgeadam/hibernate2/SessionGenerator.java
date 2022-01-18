@@ -1,8 +1,9 @@
 package com.bilgeadam.hibernate2;
 
-import com.bilgeadam.hibernate2.entities.Address;
-import com.bilgeadam.hibernate2.entities.Customer;
-import com.bilgeadam.hibernate2.entities.Toy;
+import com.bilgeadam.hibernate2.entities.customers.Address;
+import com.bilgeadam.hibernate2.entities.customers.Customer;
+import com.bilgeadam.hibernate2.entities.orders.Order;
+import com.bilgeadam.hibernate2.entities.toys.Toy;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -27,6 +28,7 @@ public class SessionGenerator {
         config.addAnnotatedClass(Toy.class);
         config.addAnnotatedClass(Address.class);
         config.addAnnotatedClass(Customer.class);
+        config.addAnnotatedClass(Order.class);
 
         return config.buildSessionFactory();
     }
