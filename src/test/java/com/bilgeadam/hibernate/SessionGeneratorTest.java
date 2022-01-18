@@ -1,6 +1,5 @@
-package com.bilgeadam.hibernate2;
+package com.bilgeadam.hibernate;
 
-import com.bilgeadam.hibernate.SessionGenerator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

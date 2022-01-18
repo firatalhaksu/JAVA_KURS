@@ -1,6 +1,5 @@
-package com.bilgeadam.hibernate2.controller;
+package com.bilgeadam.hibernate.controller;
 
-import com.bilgeadam.hibernate.controller.CustomerController;
 import com.bilgeadam.hibernate.entities.customers.Address;
 import com.bilgeadam.hibernate.entities.customers.Customer;
 import org.junit.jupiter.api.AfterEach;
