@@ -1,9 +1,9 @@
-package com.bilgeadam.hibernate2.controller;
+package com.bilgeadam.hibernate.controller;
 
-import com.bilgeadam.hibernate2.SessionGenerator;
-import com.bilgeadam.hibernate2.entities.customers.Customer;
-import com.bilgeadam.hibernate2.entities.orders.Order;
-import com.bilgeadam.hibernate2.entities.toys.Toy;
+import com.bilgeadam.hibernate.SessionGenerator;
+import com.bilgeadam.hibernate.entities.customers.Customer;
+import com.bilgeadam.hibernate.entities.orders.Order;
+import com.bilgeadam.hibernate.entities.toys.Toy;
 import org.hibernate.*;
 import org.hibernate.query.Query;
 

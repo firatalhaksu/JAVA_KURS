@@ -1,4 +1,4 @@
-package com.bilgeadam.hibernate2.entities.customers;
+package com.bilgeadam.hibernate.entities.customers;
 
 public enum State {
     ACTIVE,

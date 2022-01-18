@@ -1,7 +1,7 @@
-package com.bilgeadam.hibernate2.entities.orders;
+package com.bilgeadam.hibernate.entities.orders;
 
-import com.bilgeadam.hibernate2.entities.customers.Customer;
-import com.bilgeadam.hibernate2.entities.toys.Toy;
+import com.bilgeadam.hibernate.entities.customers.Customer;
+import com.bilgeadam.hibernate.entities.toys.Toy;
 import jakarta.persistence.*;
 import lombok.*;
 

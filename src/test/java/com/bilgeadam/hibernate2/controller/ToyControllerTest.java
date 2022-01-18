@@ -1,7 +1,8 @@
 package com.bilgeadam.hibernate2.controller;
 
-import com.bilgeadam.hibernate2.entities.toys.Toy;
-import com.bilgeadam.hibernate2.entities.toys.ToyType;
+import com.bilgeadam.hibernate.controller.ToyController;
+import com.bilgeadam.hibernate.entities.toys.Toy;
+import com.bilgeadam.hibernate.entities.toys.ToyType;
 import org.junit.jupiter.api.*;
 
 class ToyControllerTest {

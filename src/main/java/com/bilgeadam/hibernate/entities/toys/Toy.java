@@ -1,4 +1,4 @@
-package com.bilgeadam.hibernate2.entities.toys;
+package com.bilgeadam.hibernate.entities.toys;
 
 import jakarta.persistence.*;
 import lombok.*;

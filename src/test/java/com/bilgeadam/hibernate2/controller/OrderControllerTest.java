@@ -1,8 +1,11 @@
 package com.bilgeadam.hibernate2.controller;
 
-import com.bilgeadam.hibernate2.entities.customers.Customer;
-import com.bilgeadam.hibernate2.entities.toys.Toy;
-import com.bilgeadam.hibernate2.entities.toys.ToyType;
+import com.bilgeadam.hibernate.controller.CustomerController;
+import com.bilgeadam.hibernate.controller.OrderController;
+import com.bilgeadam.hibernate.controller.ToyController;
+import com.bilgeadam.hibernate.entities.customers.Customer;
+import com.bilgeadam.hibernate.entities.toys.Toy;
+import com.bilgeadam.hibernate.entities.toys.ToyType;
 import org.junit.jupiter.api.*;
 
 import java.util.Map;

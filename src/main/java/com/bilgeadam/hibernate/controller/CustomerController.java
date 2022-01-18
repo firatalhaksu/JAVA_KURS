@@ -1,9 +1,9 @@
-package com.bilgeadam.hibernate2.controller;
+package com.bilgeadam.hibernate.controller;
 
-import com.bilgeadam.hibernate2.SessionGenerator;
-import com.bilgeadam.hibernate2.entities.customers.Address;
-import com.bilgeadam.hibernate2.entities.customers.Customer;
-import com.bilgeadam.hibernate2.entities.customers.State;
+import com.bilgeadam.hibernate.SessionGenerator;
+import com.bilgeadam.hibernate.entities.customers.Address;
+import com.bilgeadam.hibernate.entities.customers.Customer;
+import com.bilgeadam.hibernate.entities.customers.State;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

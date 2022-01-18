@@ -1,9 +1,9 @@
-package com.bilgeadam.hibernate2;
+package com.bilgeadam.hibernate;
 
-import com.bilgeadam.hibernate2.entities.customers.Address;
-import com.bilgeadam.hibernate2.entities.customers.Customer;
-import com.bilgeadam.hibernate2.entities.orders.Order;
-import com.bilgeadam.hibernate2.entities.toys.Toy;
+import com.bilgeadam.hibernate.entities.customers.Address;
+import com.bilgeadam.hibernate.entities.customers.Customer;
+import com.bilgeadam.hibernate.entities.orders.Order;
+import com.bilgeadam.hibernate.entities.toys.Toy;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -19,7 +19,7 @@ public class SessionGenerator {
         Properties prop = new Properties();
 
         try {
-            prop.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("hibernate2.properties"));
+            prop.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("hibernate.properties"));
         } catch (IOException e) {
             e.printStackTrace();
         }

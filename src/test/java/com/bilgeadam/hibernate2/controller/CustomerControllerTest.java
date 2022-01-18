@@ -1,8 +1,8 @@
 package com.bilgeadam.hibernate2.controller;
 
-import com.bilgeadam.hibernate2.entities.customers.Address;
-import com.bilgeadam.hibernate2.entities.customers.Customer;
-import org.hibernate.LazyInitializationException;
+import com.bilgeadam.hibernate.controller.CustomerController;
+import com.bilgeadam.hibernate.entities.customers.Address;
+import com.bilgeadam.hibernate.entities.customers.Customer;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
