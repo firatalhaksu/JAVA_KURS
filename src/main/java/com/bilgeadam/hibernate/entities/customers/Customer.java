@@ -25,7 +25,7 @@ public class Customer {
     @OneToOne(fetch = FetchType.LAZY, orphanRemoval = true)
     private Address address;
 
-    @OneToMany
+    @OneToMany(mappedBy = "customer")
     private Set<Order> order;
 
     @Enumerated(EnumType.STRING)
