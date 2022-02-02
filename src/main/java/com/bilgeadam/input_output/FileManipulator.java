@@ -77,7 +77,7 @@ public class FileManipulator {
 
         //verilen filename ile dosya oluşturup verilen inputu içine yazdırıyoruz.
 
-        File file = new File("resouces" + File.separator + filename);
+        File file = new File("resources" + File.separator + filename);
         FileWriter writer = null;
         try {
             writer = new FileWriter(file);
