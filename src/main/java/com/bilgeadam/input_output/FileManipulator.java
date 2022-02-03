@@ -32,7 +32,7 @@ public class FileManipulator {
 
     public void readFilePerLine() throws IOException {
 
-        File file = new File("resouces" + File.separator + "Demo.txt");
+        File file = new File("resources" + File.separator + "Demo.txt");
         FileReader reader = null;
         if (file.isFile()) {
             try {
@@ -51,7 +51,7 @@ public class FileManipulator {
 
     public List<Integer> readNumbers() throws IOException {
 
-        File file = new File("resouces" + File.separator + "Numbers.txt");
+        File file = new File("resources" + File.separator + "Numbers.txt");
         FileReader reader = null;
         List<Integer> numbers = new ArrayList<>();
         if (file.isFile()) {
@@ -94,7 +94,7 @@ public class FileManipulator {
         //verilen filename ile dosya oluşturup verilen inputu içine SATIR SATIR (UTF_8 formatında byte) yazdırıyoruz.
         //"append" true verirsek, dosyaya ekleme yapmaya izin veririz. false verirsek ekleme yaptırmaz.
 
-        try (FileOutputStream stream = new FileOutputStream("resouces" + File.separator + filename,true)) {
+        try (FileOutputStream stream = new FileOutputStream("resources" + File.separator + filename,true)) {
 
             stream.write("\n".getBytes(StandardCharsets.UTF_8));        //yeni satır ekleme
             stream.write(input.getBytes(StandardCharsets.UTF_8));
