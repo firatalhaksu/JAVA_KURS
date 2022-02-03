@@ -12,7 +12,5 @@ public class CookFactory extends Thread {
     public void run() {
         synchronized (this) {
         }
-
-
     }
 }
